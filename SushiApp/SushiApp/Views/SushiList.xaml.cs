@@ -44,14 +44,22 @@ namespace SushiApp.Views
                     
                     Label priceLabel = new Label();
                     priceLabel.SetBinding(Label.TextProperty, "Price");
-                    
+
+                    Image image = new Image()
+                    {
+                        Source = ImageSource.FromFile("b.jpg"),
+                        HeightRequest = 70,
+                        WidthRequest = 70,
+                        HorizontalOptions = LayoutOptions.End
+                    };
+
                     return new ViewCell
                     {
                         View = new StackLayout
                         {
-                            Padding = new Thickness(0, 5),
+                            Padding = new Thickness(20, 15),
                             Orientation = StackOrientation.Vertical,
-                            Children = { titleLabel, companyLabel, priceLabel }
+                            Children = { titleLabel, companyLabel, priceLabel, image }
                         }
                     };
                 })

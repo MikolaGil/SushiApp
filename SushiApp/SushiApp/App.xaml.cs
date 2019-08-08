@@ -11,7 +11,7 @@ namespace SushiApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage (new SushiApp.MainPage());
+            MainPage = new NavigationPage (new MainPage());
         }
 
         protected override void OnStart()
