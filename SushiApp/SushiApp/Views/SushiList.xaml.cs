@@ -64,8 +64,14 @@ namespace SushiApp.Views
                     };
                 })
             };
+            listView.ItemTapped += ItemTapped;
             
             this.Content = new StackLayout { Children = { header, listView } };
-		}
-	}
+
+            async void ItemTapped(object sender, ItemTappedEventArgs e)
+            {
+                await Navigation.PushAsync(new OrderPage(null, e));
+            }
+        }
+    }
 }
