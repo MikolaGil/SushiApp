@@ -15,12 +15,100 @@ namespace SushiApp.Views
 
         public OrderPage(EventArgs ev, ItemTappedEventArgs e)
         {
-            ListElement element = e.Item as ListElement;
+            ListElement selectedItem = e.Item as ListElement;
 
             Label label = new Label
             {
-                Text = "Order Page"
+                Text = "Confirm Order",
+                HorizontalOptions = LayoutOptions.Center,
+                FontSize = 22,
+                TextColor = Color.FromHex("#a20025")
             };
+
+            Frame nameLayout = new Frame
+            {
+                BorderColor = Color.FromHex("#ffffff")
+            };
+
+            nameLayout.Content = new StackLayout
+            {
+                Children = {
+                    new Label
+                    {
+                        Text = "Name",
+                        FontSize = 20,
+                        HorizontalOptions = LayoutOptions.Start
+                    },
+                    new Entry
+                    {
+                        Text = selectedItem.Name,
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        IsEnabled = false
+                    }
+                }
+            };
+            StackLayout descriptionLayout = new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        Text = "Description",
+                        FontSize = 20,
+                        HorizontalOptions = LayoutOptions.Start
+                    },
+                    new Editor
+                    {
+                        Text = selectedItem.Description,
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        IsEnabled = false
+                    }
+                }
+            };
+
+            StackLayout priceLayout = new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        Text = "Price",
+                        FontSize = 20,
+                        HorizontalOptions = LayoutOptions.Start
+                    },
+                    new Entry
+                    {
+                        Text = selectedItem.Price.ToString() + '$',
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        IsEnabled = false
+                    }
+                }
+            };
+
+            Button buttonConfirm = new Button
+            {
+                Text = "Confirm",
+                FontSize = 16,
+                TextColor = Color.White,
+                BackgroundColor = Color.FromHex("6a00ff"),
+                Margin = new Thickness(45, 0),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            StackLayout layout = new StackLayout
+            {
+
+                Children =
+                {
+                    label,
+                    nameLayout,
+                    descriptionLayout,
+                    priceLayout
+                }
+            };
+
+            Content = layout;
         }
     }
 }

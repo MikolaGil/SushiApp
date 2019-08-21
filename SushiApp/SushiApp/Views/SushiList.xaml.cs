@@ -58,7 +58,7 @@ namespace SushiApp.Views
                         View = new StackLayout
                         {
                             Padding = new Thickness(20, 15),
-                            Orientation = StackOrientation.Vertical,
+                            Orientation = StackOrientation.Horizontal,
                             Children = { titleLabel, companyLabel, priceLabel, image }
                         }
                     };

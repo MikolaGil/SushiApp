@@ -18,7 +18,7 @@ namespace SushiApp
             Label mainLabel = new Label()
             {
                 Text = "Welcome to Sakura Sushi!",
-                TextColor = Color.FromRgb(194, 53, 66),
+                TextColor = Color.FromHex("6a00ff"),
                 FontSize = 20,
                 Margin = new Thickness(0, 30),
                 HorizontalOptions = LayoutOptions.Center
@@ -36,9 +36,9 @@ namespace SushiApp
             {
                 Text = "Sushi List",
                 CornerRadius = 10,
-                TextColor = Color.FromHex("ffffff"),
                 FontSize = 16,
-                BackgroundColor = Color.FromRgb(194, 53, 66),
+                TextColor = Color.White,
+                BackgroundColor = Color.FromHex("6a00ff"),
                 Margin = new Thickness(45, 0),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center
