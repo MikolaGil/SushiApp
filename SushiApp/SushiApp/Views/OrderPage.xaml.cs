@@ -85,9 +85,9 @@ namespace SushiApp.Views
                 }
             };
 
-            Button buttonConfirm = new Button
+            Button adress = new Button
             {
-                Text = "Confirm",
+                Text = "Add Adress",
                 FontSize = 16,
                 TextColor = Color.White,
                 BackgroundColor = Color.FromHex("6a00ff"),
@@ -95,6 +95,8 @@ namespace SushiApp.Views
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center
             };
+
+            adress.Clicked += async (sender, args) => await Navigation.PushAsync(new Adress()); ;
 
             StackLayout layout = new StackLayout
             {
@@ -104,7 +106,8 @@ namespace SushiApp.Views
                     label,
                     nameLayout,
                     descriptionLayout,
-                    priceLayout
+                    priceLayout,
+                    adress
                 }
             };
 

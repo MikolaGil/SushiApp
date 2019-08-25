@@ -37,6 +37,7 @@ namespace SushiApp
                 Text = "Sushi List",
                 CornerRadius = 10,
                 FontSize = 16,
+                WidthRequest = 120,
                 TextColor = Color.White,
                 BackgroundColor = Color.FromHex("6a00ff"),
                 Margin = new Thickness(45, 0),
@@ -44,9 +45,29 @@ namespace SushiApp
                 VerticalOptions = LayoutOptions.Center
             };
 
+            Label trademark = new Label
+            {
+                Text = "Mikalai Hill©",
+                TextColor = Color.FromHex("9ea7aa")
+            };
+
+            StackLayout center = new StackLayout()
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Center,
+                Children = { mainLogo, sushiList, }
+            };
+
+            StackLayout bottom = new StackLayout()
+            {
+                VerticalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.Center,
+                Children = { trademark}
+            };
+
             StackLayout mainLayout = new StackLayout()
             {
-                Children = { mainLabel, mainLogo, sushiList }
+                Children = { mainLabel, center, bottom }
             };
             this.Content = mainLayout;
 
