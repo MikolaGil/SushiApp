@@ -14,6 +14,14 @@ namespace SushiApp
         public MainPage()
         {
             InitializeComponent();
+            var refresh = new ToolbarItem
+            {
+                Text = "Test",
+                Priority = 0,
+                Order = ToolbarItemOrder.Secondary
+            };
+
+            ToolbarItems.Add(refresh);
 
             Label mainLabel = new Label()
             {
@@ -37,7 +45,6 @@ namespace SushiApp
                 Text = "Sushi List",
                 CornerRadius = 10,
                 FontSize = 16,
-                WidthRequest = 120,
                 TextColor = Color.White,
                 BackgroundColor = Color.FromHex("6a00ff"),
                 Margin = new Thickness(45, 0),
@@ -67,6 +74,7 @@ namespace SushiApp
 
             StackLayout mainLayout = new StackLayout()
             {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 Children = { mainLabel, center, bottom }
             };
             this.Content = mainLayout;

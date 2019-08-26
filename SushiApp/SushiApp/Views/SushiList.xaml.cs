@@ -33,40 +33,61 @@ namespace SushiApp.Views
             {
                 HasUnevenRows = true,
                 ItemsSource = sushiList,
-                
+
                 ItemTemplate = new DataTemplate(() =>
                 {
                     Label titleLabel = new Label { FontSize = 18 };
                     titleLabel.SetBinding(Label.TextProperty, "Name");
-                    
-                    Label companyLabel = new Label();
+
+                    Label companyLabel = new Label() {
+                        FontSize = 20
+                    };
                     companyLabel.SetBinding(Label.TextProperty, "Description");
-                    
-                    Label priceLabel = new Label();
+
+                    Label priceLabel = new Label() {
+                        FontAttributes = FontAttributes.Bold,
+                        FontSize = 18
+                    };
                     priceLabel.SetBinding(Label.TextProperty, "Price");
 
                     Image image = new Image()
                     {
                         Source = ImageSource.FromFile("b.jpg"),
                         HeightRequest = 70,
-                        WidthRequest = 70,
-                        HorizontalOptions = LayoutOptions.End
+                        WidthRequest = 70
                     };
 
+                    StackLayout mainData = new StackLayout()
+                    {
+                        Orientation = StackOrientation.Vertical,
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        Children = { titleLabel, companyLabel }
+                    };
+
+                    StackLayout secondaryData = new StackLayout()
+                    {
+                        Orientation = StackOrientation.Vertical,
+                        WidthRequest = 100,
+                        HorizontalOptions = LayoutOptions.End,
+                        Children = {image, priceLabel}
+                    };
                     return new ViewCell
                     {
                         View = new StackLayout
                         {
                             Padding = new Thickness(20, 15),
                             Orientation = StackOrientation.Horizontal,
-                            Children = { titleLabel, companyLabel, priceLabel, image }
+                            Children = { mainData, secondaryData}
                         }
                     };
                 })
             };
             listView.ItemTapped += ItemTapped;
             
-            this.Content = new StackLayout { Children = { header, listView } };
+            this.Content = new StackLayout {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Children = { header, listView }
+            };
 
             async void ItemTapped(object sender, ItemTappedEventArgs e)
             {
