@@ -90,6 +90,7 @@ namespace SushiApp.Views
                 Text = "Add Adress",
                 FontSize = 16,
                 TextColor = Color.White,
+                CornerRadius = 10,
                 BackgroundColor = Color.FromHex("6a00ff"),
                 Margin = new Thickness(45, 0),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
