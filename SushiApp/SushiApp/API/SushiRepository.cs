@@ -5,33 +5,33 @@ using System.Linq;
 using SQLite;
 using Xamarin.Forms;
 using SushiApp.interfaces;
-using SushiApp.Model;
+using SushiApp.db;
 
 namespace SushiApp.API
 {
-    class SushiRepository
+    public class SushiRepository
     {
         SQLiteConnection database;
         public SushiRepository(string filename)
         {
             string databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(filename);
             database = new SQLiteConnection(databasePath);
-            database.CreateTable<ListElement>();
+            database.CreateTable<Sushi>();
         }
-        public IEnumerable<ListElement> GetItems()
+        public IEnumerable<Sushi> GetItems()
         {
-            return (from i in database.Table<ListElement>() select i).ToList();
+            return (from i in database.Table<Sushi>() select i).ToList();
 
         }
-        public ListElement GetItem(int id)
+        public Sushi GetItem(int id)
         {
-            return database.Get<ListElement>(id);
+            return database.Get<Sushi>(id);
         }
         public int DeleteItem(int id)
         {
-            return database.Delete<ListElement>(id);
+            return database.Delete<Sushi>(id);
         }
-        public int SaveItem(ListElement item)
+        public int SaveItem(Sushi item)
         {
             if (item.Id != 0)
             {

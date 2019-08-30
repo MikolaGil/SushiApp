@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using System.IO;
 using SushiApp.interfaces;
 using Xamarin.Forms;
+using static SushiApp.Droid.SQLite;
 
+[assembly: Dependency(typeof(SQLite_Android))]
 namespace SushiApp.Droid
 {
     class SQLite
     {
+
         public class SQLite_Android : ISQLite
         {
             public SQLite_Android() { }

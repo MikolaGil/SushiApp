@@ -32,7 +32,7 @@ namespace SushiApp.Views
             ListView listView = new ListView
             {
                 HasUnevenRows = true,
-                ItemsSource = sushiList,
+                ItemsSource = App.Database.GetItems(),
 
                 ItemTemplate = new DataTemplate(() =>
                 {
