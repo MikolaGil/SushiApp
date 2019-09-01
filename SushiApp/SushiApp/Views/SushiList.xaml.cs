@@ -23,10 +23,10 @@ namespace SushiApp.Views
 
             var sushiList = new List<ListElement>
             {
-                new ListElement { Name="Spicy maki", Description="Very tasty", Price=1.8 },
-                new ListElement { Name = "Tokio maki", Description = "Tokio tasty", Price =1.5 },
-                new ListElement { Name = "Nigiri", Description = "I don't know what is it", Price =2.3 },
-                new ListElement { Name = "Spicy gunkan", Description = "The same story", Price = 1.1},
+                new ListElement { Name="Spicy maki", Description="Копченый лосось, авокадо, сливочный сыр", Price=1.8 },
+                new ListElement { Name = "Tokyo maki", Description = "Копченый лосось, сливочный сыр, огурец", Price =1.5 },
+                new ListElement { Name = "Nigiri", Description = "Морской окунь, сливочный сыр, соус Спайси", Price =2.3 },
+                new ListElement { Name = "Spicy gunkan", Description = "Морской окунь, огурец, салат Айсберг", Price = 1.1},
             };
 
             ListView listView = new ListView
@@ -48,7 +48,7 @@ namespace SushiApp.Views
                         FontAttributes = FontAttributes.Bold,
                         FontSize = 18
                     };
-                    priceLabel.SetBinding(Label.TextProperty, "Price");
+                    priceLabel.SetBinding(Label.TextProperty, "Price" + " Br");
 
                     Image image = new Image()
                     {
