@@ -8,7 +8,7 @@ namespace SushiApp
 {
     public partial class App : Application
     {
-        public const string SushiData = "sushi.db";
+        public const string SushiData = "sushiT.db";
         public static SushiRepository database;
         public static SushiRepository Database
         {
