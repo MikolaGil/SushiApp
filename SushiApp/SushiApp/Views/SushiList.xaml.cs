@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using SushiApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,12 +17,12 @@ namespace SushiApp.Views
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            var sushiList = new List<ListElement>
+            var sushiList = new List<Sushi>
             {
-                new ListElement { Name="Spicy maki", Description="Копченый лосось, авокадо, сливочный сыр", Price=1.8 },
-                new ListElement { Name = "Tokyo maki", Description = "Копченый лосось, сливочный сыр, огурец", Price =1.5 },
-                new ListElement { Name = "Nigiri", Description = "Морской окунь, сливочный сыр, соус Спайси", Price =2.3 },
-                new ListElement { Name = "Spicy gunkan", Description = "Морской окунь, огурец, салат Айсберг", Price = 1.1},
+                new Sushi { Name="Spicy maki", Description="Копченый лосось, авокадо, сливочный сыр", Price=1.8 },
+                new Sushi { Name = "Tokyo maki", Description = "Копченый лосось, сливочный сыр, огурец", Price =1.5 },
+                new Sushi { Name = "Nigiri", Description = "Морской окунь, сливочный сыр, соус Спайси", Price =2.3 },
+                new Sushi { Name = "Spicy gunkan", Description = "Морской окунь, огурец, салат Айсберг", Price = 1.1},
             };
 
             ListView listView = new ListView

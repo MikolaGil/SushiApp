@@ -4,8 +4,8 @@ using System.Text;
 using System.Linq;
 using SQLite;
 using Xamarin.Forms;
+using SushiApp.Model;
 using SushiApp.interfaces;
-using SushiApp.db;
 
 namespace SushiApp.API
 {

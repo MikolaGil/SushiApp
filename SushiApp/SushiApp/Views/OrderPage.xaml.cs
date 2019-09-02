@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SushiApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +11,7 @@ namespace SushiApp.Views
 
         public OrderPage(EventArgs ev, ItemTappedEventArgs e)
         {
-            ListElement selectedItem = e.Item as ListElement;
+            Sushi selectedItem = e.Item as Sushi;
 
             Label label = new Label
             {
@@ -25,14 +21,14 @@ namespace SushiApp.Views
                 TextColor = Color.FromHex("#a20025")
             };
 
-            Frame nameLayout = new Frame
+            Frame name = new Frame
             {
-                BorderColor = Color.FromHex("#ffffff")
-            };
-
-            nameLayout.Content = new StackLayout
-            {
-                Children = {
+                BorderColor = Color.FromHex("#ffffff"),
+                Content = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    Children = {
                     new Label
                     {
                         Text = "Name",
@@ -42,45 +38,58 @@ namespace SushiApp.Views
                     new Entry
                     {
                         Text = selectedItem.Name,
-                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
                         IsEnabled = false
                     }
                 }
+                }
             };
-            StackLayout descriptionLayout = new StackLayout
+
+            Frame description = new Frame
             {
-                Children =
+                BorderColor = Color.FromHex("#ffffff"),
+                Content = new StackLayout
                 {
-                    new Label
-                    {
-                        Text = "Description",
-                        FontSize = 20,
-                        HorizontalOptions = LayoutOptions.Start
-                    },
-                    new Editor
-                    {
-                        Text = selectedItem.Description,
-                        HorizontalOptions = LayoutOptions.StartAndExpand,
-                        IsEnabled = false
+                    Orientation = StackOrientation.Vertical,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    Children = {
+                        new Label
+                        {
+                            Text = "Description",
+                            FontSize = 20,
+                            WidthRequest = 110,
+                            HorizontalOptions = LayoutOptions.Center
+                        },
+                        new Editor
+                        {
+                            Text = selectedItem.Description,
+                            HorizontalOptions = LayoutOptions.StartAndExpand,
+                            IsEnabled = false
+                        }
                     }
                 }
             };
 
-            StackLayout priceLayout = new StackLayout
+            Frame price = new Frame
             {
-                Children =
+                BorderColor = Color.FromHex("#ffffff"),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Content = new StackLayout
                 {
-                    new Label
-                    {
-                        Text = "Price",
-                        FontSize = 20,
-                        HorizontalOptions = LayoutOptions.Start
-                    },
-                    new Entry
-                    {
-                        Text = selectedItem.Price.ToString() + '$',
-                        HorizontalOptions = LayoutOptions.StartAndExpand,
-                        IsEnabled = false
+                    Orientation = StackOrientation.Horizontal,
+                    Children = {
+                        new Label
+                        {
+                            Text = "Price",
+                            FontSize = 20,
+                            HorizontalOptions = LayoutOptions.Start
+                        },
+                        new Entry
+                        {
+                            Text = selectedItem.Price.ToString() + '$',
+                            HorizontalOptions = LayoutOptions.EndAndExpand,
+                            IsEnabled = false
+                        }
                     }
                 }
             };
@@ -97,7 +106,7 @@ namespace SushiApp.Views
                 VerticalOptions = LayoutOptions.Center
             };
 
-            adress.Clicked += async (sender, args) => await Navigation.PushAsync(new Adress()); ;
+            adress.Clicked += async (sender, args) => await Navigation.PushAsync(new Adress(selectedItem)); ;
 
             StackLayout layout = new StackLayout
             {
@@ -105,9 +114,9 @@ namespace SushiApp.Views
                 Children =
                 {
                     label,
-                    nameLayout,
-                    descriptionLayout,
-                    priceLayout,
+                    name,
+                    price,
+                    description,
                     adress
                 }
             };
