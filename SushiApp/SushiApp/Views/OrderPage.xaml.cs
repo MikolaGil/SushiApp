@@ -29,19 +29,19 @@ namespace SushiApp.Views
                     Orientation = StackOrientation.Horizontal,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     Children = {
-                    new Label
-                    {
-                        Text = "Name",
-                        FontSize = 20,
-                        HorizontalOptions = LayoutOptions.Start
-                    },
-                    new Entry
-                    {
-                        Text = selectedItem.Name,
-                        HorizontalOptions = LayoutOptions.EndAndExpand,
-                        IsEnabled = false
+                        new Label
+                        {
+                            Text = "Name",
+                            FontSize = 20,
+                            HorizontalOptions = LayoutOptions.Start
+                        },
+                        new Entry
+                        {
+                            Text = selectedItem.Name,
+                            HorizontalOptions = LayoutOptions.EndAndExpand,
+                            IsEnabled = false
+                        }
                     }
-                }
                 }
             };
 

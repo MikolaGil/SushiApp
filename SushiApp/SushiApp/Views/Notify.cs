@@ -1,16 +1,17 @@
 ﻿using Plugin.LocalNotifications;
 using System;
 using SushiApp.Notification;
-
 using Xamarin.Forms;
 using static SushiApp.Notification.NotificationMsg;
+using SushiApp.Delegates;
 
 namespace SushiApp.Views
 {
 	public class Notify : ContentPage
 	{
         NotificationMsg Notification = new NotificationMsg();
-		public Notify ()
+
+        public Notify ()
 		{
             Notification.createMsg((int)orderStatus.Preparing);
             Notification.createMsg((int)orderStatus.Delivering);
