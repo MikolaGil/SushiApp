@@ -50,7 +50,8 @@ namespace SushiApp.Views
             {
                 Placeholder = "Phone",
                 PlaceholderColor = Color.Olive,
-                Keyboard = Keyboard.Telephone
+                Keyboard = Keyboard.Telephone,
+                Margin = new Thickness(0, 20)
             };
 
             Button confirm = new Button
@@ -70,6 +71,7 @@ namespace SushiApp.Views
             {
                 string message = MakeMessage();
                 bool answer = await DisplayAlert("Confirm", message, "Yes", "No");
+
                 if (answer)
                 {
                     await Navigation.PushAsync(new Notify());
@@ -90,16 +92,24 @@ namespace SushiApp.Views
 
             string MakeMessage()
             {
-                StringBuilder message = new StringBuilder("All data correct ?\n\n");
+                try
+                {
+                    StringBuilder message = new StringBuilder("All data correct ?\n\n");
 
-                message.Append("Sushi: ");
-                message.Append(data.Name + "\n");
-                message.Append("Price: ");
-                message.Append(data.Price + "$\n");
-                message.Append("City: ");
-                message.Append(cityPicker.SelectedItem);
+                    message.Append("Sushi: ");
+                    message.Append(data.Name + "\n");
+                    message.Append("Price: ");
+                    message.Append(data.Price + "$\n");
+                    message.Append("City: ");
+                    message.Append(cityPicker.SelectedItem);
 
-                return message.ToString();
+                    return message.ToString();
+                }
+                catch (Exception ex)
+                {
+                    return "Error to get data";
+                }
+
             }
 
             Content = layout;

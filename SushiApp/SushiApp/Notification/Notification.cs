@@ -1,4 +1,5 @@
 ﻿using Plugin.LocalNotifications;
+using SushiApp.CustomException;
 using System;
 
 namespace SushiApp.Notification
@@ -15,7 +16,16 @@ namespace SushiApp.Notification
 
         private void Notificate(string msg, int delay)
         {
-            CrossLocalNotifications.Current.Show("Info about delivery", msg, 101, DateTime.Now.AddSeconds(delay));
+            try
+            {
+                CrossLocalNotifications.Current.Show("Info about delivery", msg, 101, DateTime.Now.AddSeconds(delay));
+                throw new NotifyException("It works");
+            }
+            catch (NotifyException ex)
+            {
+                
+            }
+
         }
         
         public void createMsg(int status)
