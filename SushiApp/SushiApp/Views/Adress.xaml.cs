@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SushiApp.Model;
+using SushiApp.Delegates;
 
 namespace SushiApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Adress : ContentPage
 	{
+       
 		public Adress (Sushi data)
 		{
 			InitializeComponent ();
@@ -95,11 +96,12 @@ namespace SushiApp.Views
                 try
                 {
                     StringBuilder message = new StringBuilder("All data correct ?\n\n");
+                    var total = new GetPrice(FullPrice);
 
                     message.Append("Sushi: ");
                     message.Append(data.Name + "\n");
                     message.Append("Price: ");
-                    message.Append(data.Price + "$\n");
+                    message.Append(total(data.Price, 3) + "$\n");
                     message.Append("City: ");
                     message.Append(cityPicker.SelectedItem);
 
@@ -112,7 +114,15 @@ namespace SushiApp.Views
 
             }
 
+            double FullPrice(double sushiPrice, double deliveryPrice)
+            {
+                double price = sushiPrice + deliveryPrice;
+                return price;
+            }
+
             Content = layout;
         }
+
+
 	}
 }
