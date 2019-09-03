@@ -4,7 +4,7 @@ using System;
 
 namespace SushiApp.Notification
 {
-    public class NotificationMsg
+    public class NotificationMsg : IDisposable
     {
         public int status { get; set; }
         public enum orderStatus: byte
@@ -19,6 +19,8 @@ namespace SushiApp.Notification
             try
             {
                 CrossLocalNotifications.Current.Show("Info about delivery", msg, 101, DateTime.Now.AddSeconds(delay));
+
+                Dispose();
                 throw new NotifyException("It works");
             }
             catch (NotifyException ex)
@@ -42,6 +44,11 @@ namespace SushiApp.Notification
                     Notificate("Enjoy your meals", 5);
                     break;
             }
+        }
+
+        public void Dispose()
+        {
+            this.status = status;
         }
     }
 }
