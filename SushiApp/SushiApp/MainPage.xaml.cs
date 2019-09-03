@@ -1,14 +1,19 @@
-﻿using SushiApp.Views;
+﻿using Plugin.LocalNotifications;
+using SushiApp.Views;
 using Xamarin.Forms;
 
 namespace SushiApp
 {
     public partial class MainPage : ContentPage
     {
+
         public MainPage()
         {
             InitializeComponent();
-            var refresh = new ToolbarItem
+
+            CrossLocalNotifications.Current.Show("Greetings!", "Thank you for choosing our service");
+
+            ToolbarItem refresh = new ToolbarItem
             {
                 Text = "Test",
                 Priority = 0,

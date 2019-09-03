@@ -2,7 +2,7 @@
 using SQLite;
 using SushiApp.interfaces;
 
-namespace SushiApp.db
+namespace SushiApp.Model
 {
     [Table("Sushi")]
     public class Sushi : ISushi

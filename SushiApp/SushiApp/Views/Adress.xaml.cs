@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SushiApp.Model;
 
 namespace SushiApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Adress : ContentPage
 	{
-		public Adress ()
+		public Adress (Sushi data)
 		{
 			InitializeComponent ();
 
@@ -69,7 +68,12 @@ namespace SushiApp.Views
 
             async void ConfirmQuestion(object sender, EventArgs e)
             {
-                bool answer = await DisplayAlert("Confirm", "All data correct?", "Yes", "No");
+                string message = MakeMessage();
+                bool answer = await DisplayAlert("Confirm", message, "Yes", "No");
+                if (answer)
+                {
+                    await Navigation.PushAsync(new Notify());
+                }
             }
 
             StackLayout layout = new StackLayout
@@ -83,6 +87,20 @@ namespace SushiApp.Views
                     confirm
                 }
             };
+
+            string MakeMessage()
+            {
+                StringBuilder message = new StringBuilder("All data correct ?\n\n");
+
+                message.Append("Sushi: ");
+                message.Append(data.Name + "\n");
+                message.Append("Price: ");
+                message.Append(data.Price + "$\n");
+                message.Append("City: ");
+                message.Append(cityPicker.SelectedItem);
+
+                return message.ToString();
+            }
 
             Content = layout;
         }
