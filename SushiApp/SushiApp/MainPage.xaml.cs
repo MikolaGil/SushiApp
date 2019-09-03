@@ -1,6 +1,7 @@
 ﻿using Plugin.LocalNotifications;
 using SushiApp.Views;
 using Xamarin.Forms;
+using SushiApp.Extension;
 
 namespace SushiApp
 {
@@ -24,12 +25,13 @@ namespace SushiApp
 
             Label mainLabel = new Label()
             {
-                Text = "Welcome to Sakura Sushi!",
                 TextColor = Color.FromHex("6a00ff"),
                 FontSize = 20,
                 Margin = new Thickness(0, 30),
                 HorizontalOptions = LayoutOptions.Center
             };
+
+            mainLabel.Text = mainLabel.AddTrademark("Welcome to Sakura Sushi!");
 
             Image mainLogo = new Image()
             {
