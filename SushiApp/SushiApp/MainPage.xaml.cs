@@ -49,7 +49,7 @@ namespace SushiApp
                 TextColor = Color.White,
                 BackgroundColor = Color.FromHex("6a00ff"),
                 Margin = new Thickness(45, 0),
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.Center
             };
 
@@ -75,7 +75,7 @@ namespace SushiApp
 
             StackLayout mainLayout = new StackLayout()
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Children = { mainLabel, center, bottom }
             };
             this.Content = mainLayout;
