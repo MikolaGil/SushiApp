@@ -57,7 +57,7 @@ namespace SushiApp.Views
                     {
                         Orientation = StackOrientation.Vertical,
                         HorizontalOptions = LayoutOptions.StartAndExpand,
-                        Children = { titleLabel, companyLabel }
+                        Children = { titleLabel, companyLabel, priceLabel }
                     };
 
                     StackLayout secondaryData = new StackLayout()
@@ -65,7 +65,7 @@ namespace SushiApp.Views
                         Orientation = StackOrientation.Vertical,
                         WidthRequest = 100,
                         HorizontalOptions = LayoutOptions.End,
-                        Children = {image, priceLabel}
+                        Children = {image}
                     };
                     return new ViewCell
                     {
